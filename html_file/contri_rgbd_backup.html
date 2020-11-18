@@ -1,0 +1,197 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>IEEE Trans on PARMI: RGB-D Vision for Action Recognition: Representation, Classification, Dataset and Application</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="./css/contri_ob.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-89797207-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+
+        <meta property="og:url"           content="http://vpg.cs.princeton.edu/" />
+	    <meta property="og:type"          content="website" />
+	    <meta property="og:title"         content="Course Project: Object Classification and Pose Estimation Using Deep Neural Network" />
+	    <meta property="og:description"   content="Skilled robotic manipulation benefits from complex synergies between non-prehensile (e.g. pushing) and prehensile (e.g. grasping) actions: pushing can help rearrange cluttered objects to make space for arms and fingers; likewise, grasping can help displace objects to make pushing movements more precise and collision-free. In this work, we demonstrate that it is possible to discover and learn these synergies from scratch through model-free deep reinforcement learning. Our method involves training two fully convolutional networks that map from visual observations to actions: one infers the utility of pushes for a dense pixel-wise sampling of end effector orientations and locations, while the other does the same for grasping. Both networks are trained jointly in a Q-learning framework and are entirely self-supervised by trial and error, where rewards are provided from successful grasps. In this way, our policy learns pushing motions that enable future grasps, while learning grasps that can leverage past pushes. During picking experiments in both simulation and real-world scenarios, we find that our system quickly learns complex behaviors amid challenging cases of clutter, and achieves better grasping success rates and picking efficiencies than baseline alternatives after only a few hours of training. We further demonstrate that our method is capable of generalizing to novel objects." />
+	    <meta property="og:image"         content="http://vpg.cs.princeton.edu/images/teaser.jpg" />
+
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<!-- <header id="header">
+				<div class="inner">
+					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+					<h1><strong>Andy Zeng</strong><br></h1>
+					<h1>PhD Student @ <a href="http://www.cs.princeton.edu/">Princeton</a><br></h1>
+					<h1><sup>advised by <a href="https://www.cs.princeton.edu/~funk/">Tom Funkhouser</a></sup><br></h1>
+					<h1>Graduated from <a href="https://www.berkeley.edu/">Berkeley</a><br></h1>
+					<h1><sup>Bachelors in CS and Math</sup><br></h1>
+					<h1>Works on AI &amp; Robotics<br></h1>
+					<h1><sup>@ <a href="http://3dvision.princeton.edu/">Princeton Vision Group</a></sup><br></h1>
+					<h1><sup>andyz_at_princeton.edu </a></sup><br></h1>
+					<ul class="icons">
+						<li><a href="resume.pdf" class="icon" style="font-weight: 700"><font size="6">cv</font></a></li>
+						<li><a href="https://twitter.com/bluerobots" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://scholar.google.com/citations?user=q7nFtUcAAAAJ&hl=en" class="icon fa-graduation-cap"><span class="label">G. Scholar</span></a></li>
+						<li><a href="https://www.linkedin.com/in/andy-zeng-6575b85b" class="icon fa-linkedin"><span class="label">Github</span></a></li>
+						<li><a href="https://github.com/andyzeng" class="icon fa-github"><span class="label">Github</span></a></li>
+					</ul>
+				</div>
+			</header> -->
+
+		<!-- Main -->
+			<div id="main" style="padding-bottom:1em; padding-top: 5em; width: 60em; max-width: 70em; margin-left: auto; margin-right: auto;">
+					<section id="four">
+
+						<!-- <p><ul class="icons"><li><a href="#" class="icon fa-wrench"><span class="label">Twitter</span>&nbsp;&nbsp;This page is still under construction.</a></li></ul></p> -->
+
+						<h1 style="text-align: center; margin-bottom: 0;">RGB-D Vision for Action Recognition: Representation, Classification, Dataset and Application</h1>
+				<h2 style="text-align: center;">Guang Chen*, Jieneng Chen, Manerl Giuliani, Aiguo Zhou, Daniel Clarke, and Alois Knoll</h2> 
+
+						<!-- <h3>Abstract</h3> -->
+						<!-- <span class="image right" style="max-width: 40%; margin-bottom: 0;"><img src="images/teaser.jpg" alt="" /></span> -->
+						<p>In this paper we survey the research works in RGB-D based human action recognition. We discuss the novelties of recent research in RGB-D video representations and human action modeling. We present currently available RGB-D action datasets suitable for RGB-D action analysis. In consideration of the rapid development of deep learning, we summarize deep learning methods related to RGB-D action recognition. Moreover, we explicitly address the limitations of the state-of-the-art and point out the challenges and promising directions for future research. Besides, to ease accessibility, we provide a web-based interactive platform, which allow researchers to navigate datasets and their state-of-art methods.
+						</p>
+
+
+	
+						<!-- <div class="row">
+							<div class="6u 12u$(xsmall)">
+								<h5 style="color: #a2a2a2; margin-bottom: 0;">The video on the right shows a live example with our robot. With our system, both pushing and grasping policies can work in tandem to produce complex interactions with objects that support more efficient picking (<i>e.g.</i> pushing multiple objects at a time, separating two objects, breaking up a tight cluster of objects through a chain of reactions). These behaviors naturally emerge from experience.</h5>
+							</div>
+							<div class="6u$ 12u$(xsmall)" style="max-width: 50%;">
+								<span class="image left" style="max-width: 100%; margin-bottom: 0;"><video class="image fit"  style="margin-bottom: 0;" controls><source src="images/videos/test-vpg-novel-02-smaller.mp4" type="video/mp4">Your browser does not support this video.</video></span>
+							</div>
+						</div> -->
+
+
+<!--
+						<hr/>
+						<p style="margin-bottom: 1em;">Latest version (27 Mar 2018): <a href="https://arxiv.org/abs/1803.09956">arXiv:1803.09956 [cs.RO]</a> or <a href="paper.pdf">here</a>.<br>To appear at IEEE International Conference on Intelligent Robots and Systems (IROS) 2018<br><font color="4e79a7">&#9733; IROS KROS Best Cognitive Robotics Paper Award Finalist &#9733;</font></p>
+
+						<div class="12u$"><a href="https://arxiv.org/pdf/1803.09956.pdf"><span class="image fit" style="border: 1px solid; border-color: #888888;"><img src="images/paper-thumbnail.jpg" alt="" /></span></a></div>
+
+						<section>
+							<div class="box alt" style="margin-bottom: 1em;">
+								<div class="row 50% uniform" style="width: 80%;">
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="http://andyzeng.github.io/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/andy-thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Andy Zeng <sup>1,2</sup></a></div>
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="http://vision.princeton.edu/people/shurans/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/shuran-thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Shuran Song <sup>1,2</sup></a></div>
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="https://www.linkedin.com/in/stefan-welker"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/stefan-thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Stefan Welker <sup>2</sup></a></div>
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="http://johnnylee.net/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/johnny-thumbnail.png" alt="" style="border-radius: 50%;" /></span>Johnny Lee <sup>2</sup></a></div>
+									<div class="2u" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="http://meche.mit.edu/people/faculty/ALBERTOR@MIT.EDU"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/alberto-thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Alberto Rodriguez <sup>3</sup></a></div>
+									<div class="2u$" style="font-size: 0.7em; line-height: 1.5em; text-align: center;"><a href="https://www.cs.princeton.edu/~funk/"><span class="image fit" style="margin-bottom: 0.5em;"><img src="images/thomas-thumbnail.jpg" alt="" style="border-radius: 50%;" /></span>Thomas Funkhouser <sup>1,2</sup></a></div>
+									<!-- <div class="2u"><span class="image fit"><img src="images/thumbs/02.jpg" alt="" /></span></div>
+									<div class="2u"><span class="image fit"><img src="images/thumbs/03.jpg" alt="" /></span></div>
+									<div class="2u"><span class="image fit"><img src="images/thumbs/04.jpg" alt="" /></span></div>
+									<div class="2u"><span class="image fit"><img src="images/thumbs/05.jpg" alt="" /></span></div>
+									<div class="2u$"><span class="image fit"><img src="images/thumbs/06.jpg" alt="" /></span></div> 
+								</div>
+							</div>
+						</section>
+						<sup>1</sup> Princeton University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup> Google&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>3</sup> Massachusetts Institute of Technology
+						<hr/>
+						<div class="row">
+							<div class="6u 12u$(xsmall)">
+								<h3>Code</h3>
+								Code is available on <a href="https://github.com/andyzeng/visual-pushing-grasping">Github</a>. Includes:
+								<ul>
+									<li>Training/testing code (with PyTorch/Python)</li>
+									<li>Simulation environments (with V-REP)</li>
+									<li>Code for real-world setups (with UR5 robots)</li>
+									<li>Pre-trained models and baselines</li>
+									<li>Evaluation code (with Python)</li>
+								</ul>
+							</div>
+
+							<div class="6u$ 12u$(xsmall)">
+								<h3>Bibtex</h3>
+								<pre><code>@article{zeng2018learning,
+  title={Learning Synergies between Pushing and Grasping with Self-supervised Deep Reinforcement Learning},
+  author={Zeng, Andy and Song, Shuran and Welker, Stefan and Lee, Johnny and Rodriguez, Alberto and Funkhouser, Thomas},
+  journal={arXiv preprint arXiv:1803.09956},
+  year={2018}
+}</code></pre>
+
+							</div>
+					
+			<!--
+						</div>
+
+						<h3 style="text-align: center;">Summary Video</h3>
+
+						<iframe id="match-video" width="880" height="495" style="margin-bottom: 2em; margin-left: auto; margin-right: auto; display:block;" src="https://www.youtube.com/embed/-OkyX7ZlhiU?rel=0" frameborder="0" allowfullscreen></iframe> <!-- width="880" height="495" -->
+			
+
+						<h3>The following is my contribution:</h3>
+
+<!--						<div class="12u$"><a href=""><span class="image fit"><img src="imgs/detection.png" alt="" /></span></a></div>
+-->
+						<p>
+								<ul>
+									<li>Made a timeline about the release year of datasets and representative researches (Both RGB and RGBD action recognition), aiming for figuring out the trend of action recognition and strengthing our motivation for this survey.</li>
+									<li>Looked up over 2000 articles in the field of RGB-D action recognition from 2010 to 2018. Sorted them according to this survey's taxonomy.</li>
+									<li>Finished the 90% writing work of this survey. Revised and polish the survey for 1 month.</li>
+									<li>Built a web-based interactive platform allowing researchers to navigate datasets and their state-of-art methods. The platform sorts out the current avaliable RGB-D action datasets and their representative state-of-the-art methods.</li>
+								</ul>
+						</p>
+						
+
+						<h3>The principle that I followed in my writing</h3>
+
+<!--						<div class="12u$"><a href=""><span class="image fit"><img src="imgs/detection.png" alt="" /></span></a></div>
+-->
+						<p>
+								<ul>
+									<li>Define and limit the problem in RGB-D action recognition.</li>
+									<li>Highlight the exemplary studies in RGB and RGB-D action recognition.</li>
+									<li>Highlight gaps in research.</li>
+									<li>The review should not be simply a description of what others have published in the form of a set of summaries, but should take the form of a critical discussion, showing insight and an awareness of differing arguments, theories and approaches.</li>
+									<li>Identifies areas of controversy, raises questions and identifies areas which need further research.</li>
+									<li>Relate the findings to previous knowledge and suggest further research.</li>
+
+								</ul>
+						</p>
+
+			
+
+<!--
+						<div class="row">
+
+							<div class="6u 12u$(xsmall)">
+								<p>Tuesday, March 28, 2018<br>by <a href="http://andyzeng.github.io/">Jieneng Chen</a></p>
+							</div>
+							<div class="6u$ 12u$(xsmall)" style="text-align: right;">
+								<ul class="icons"><li><a href="https://twitter.com/intent/tweet?text=Learning%20Synergies%20between%20Pushing%20and%20Grasping%20with%20Self-supervised Deep%20Reinforcement%20Learning%20http://vpg.cs.princeton.edu" class="icon fa-twitter"><span class="label">Twitter</span>&nbsp;Jieneng Chen</a></li>&nbsp;&nbsp;&nbsp;&nbsp;<li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fvpg.cs.princeton.edu%2F" class="icon fa-facebook-square"><span class="label">Code(Github)</span>&nbsp;&nbsp;Code(Github)</a></li></ul>
+								<ul class="icons"></ul>
+							</div>
+						</div>
+					</section>
+			</div>
+-->
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>Meet <a href="https://en.wikipedia.org/wiki/Danbo_(character)">Danbo</a> the cardboard robot.</li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
